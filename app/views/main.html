@@ -31,7 +31,7 @@
 				<div class="form-group col-sm-3">
 					<label class="sr-only">Job level</label>
 					<input type="text" class="form-control" ng-model="level" placeholder="Job level"
-					uib-typeahead="l for l in levels | filter:$viewValue" typeahead-min-length="0"
+					uib-typeahead="l for l in levels | filter:$viewValue" typeahead-min-length="1"
 					typeahead-on-select="addCriteria(params.level, level); level=''"> 
 					<button class="btn btn-primary" ng-click="addCriteria(params.level, level); level=''" ng-disabled="!level">
 						<span class="glyphicon glyphicon-plus"></span> 
@@ -42,7 +42,7 @@
 				<div class="form-group col-sm-3">
 					<label class="sr-only">Category</label>
 					<input type="text" class="form-control" ng-model="category" placeholder="Category"
-					uib-typeahead="ca for ca in categories | filter:$viewValue | limitTo:10" typeahead-min-length="0"
+					uib-typeahead="ca for ca in categories | filter:$viewValue | limitTo:10" typeahead-min-length="1"
 					typeahead-on-select="addCriteria(params.category, category); category=''">
 					<button class="btn btn-primary" ng-click="addCriteria(params.category, category); category=''" ng-disabled="!category">
 						<span class="glyphicon glyphicon-plus"></span>
