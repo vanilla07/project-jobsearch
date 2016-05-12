@@ -21,9 +21,7 @@ angular.module('jobSearchApp')
     };
 
     var isEmpty = function(tab) {
-      if (!tab || tab.length === 0) {
-        return true;
-      }
+      return (!tab || tab.length === 0);
     };
 
     $scope.emptySelection = function() {
@@ -46,7 +44,6 @@ angular.module('jobSearchApp')
         if (index <= -1) {
           params.push(param);
         }
-        param = '';
       }
     };
 

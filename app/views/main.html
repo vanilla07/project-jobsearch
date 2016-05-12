@@ -5,30 +5,50 @@
   	</p>
   	<form class="search-fields form-inline"> 
   		<div class="row">
-			<div class="form-group col-sm-3">
-				<label class="sr-only">City</label>
-		    	<input type="text" class="form-control" ng-model="city" placeholder="City"
-		    	uib-typeahead="c for c in cities | filter:$viewValue | limitTo:10" typeahead-min-length="1">
-		    	<button class="btn btn-primary" ng-click="addCriteria(params.location, city); city=''"><span class="glyphicon glyphicon-plus"></span></button>
-		    </div>
-		    <div class="form-group col-sm-3">
-				<label class="sr-only">Companies</label>
-				<input type="text" class="form-control" ng-model="company" placeholder="Companies"
-				uib-typeahead="co for co in companies | filter:$viewValue | limitTo:10" typeahead-min-length="1">
-				<button class="btn btn-primary" ng-click="addCriteria(params.company, company); company=''"><span class="glyphicon glyphicon-plus"></span></button>
-			</div>
-			<div class="form-group col-sm-3">
-				<label class="sr-only">Job level</label>
-				<input type="text" class="form-control" ng-model="level" placeholder="Job level"
-				uib-typeahead="l for l in levels | filter:$viewValue" typeahead-min-length="0"> 
-				<button class="btn btn-primary" ng-click="addCriteria(params.level, level); level=''"><span class="glyphicon glyphicon-plus"></span> </button>
-			</div>
-			<div class="form-group col-sm-3">
-				<label class="sr-only">Category</label>
-				<input type="text" class="form-control" ng-model="category" placeholder="Category"
-				uib-typeahead="ca for ca in categories | filter:$viewValue | limitTo:10" typeahead-min-length="0">
-				<button class="btn btn-primary" ng-click="addCriteria(params.category, category); category=''"><span class="glyphicon glyphicon-plus"></span></button>
-			</div>
+  			<form name="locationForm">
+				<div class="form-group col-sm-3">
+					<label class="sr-only">City</label>
+			    	<input type="text" class="form-control" ng-model="city" placeholder="City"
+			    	uib-typeahead="c for c in cities | filter:$viewValue | limitTo:10" typeahead-min-length="1"
+			    	typeahead-on-select="addCriteria(params.location, city); city=''">
+			    	<button class="btn btn-primary" ng-click="addCriteria(params.location, city); city=''" ng-disabled="!city">
+			    		<span class="glyphicon glyphicon-plus"></span>
+			    	</button>
+			    </div>
+		    </form>
+		    <form name="companyForm">
+			    <div class="form-group col-sm-3">
+					<label class="sr-only">Companies</label>
+					<input type="text" class="form-control" ng-model="company" placeholder="Companies"
+					uib-typeahead="co for co in companies | filter:$viewValue | limitTo:10" typeahead-min-length="1"
+					typeahead-on-select="addCriteria(params.company, company); company=''">
+					<button class="btn btn-primary" ng-click="addCriteria(params.company, company); company=''" ng-disabled="!company">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</div>
+		    </form>
+		    <form name="levelForm">
+				<div class="form-group col-sm-3">
+					<label class="sr-only">Job level</label>
+					<input type="text" class="form-control" ng-model="level" placeholder="Job level"
+					uib-typeahead="l for l in levels | filter:$viewValue" typeahead-min-length="0"
+					typeahead-on-select="addCriteria(params.level, level); level=''"> 
+					<button class="btn btn-primary" ng-click="addCriteria(params.level, level); level=''" ng-disabled="!level">
+						<span class="glyphicon glyphicon-plus"></span> 
+					</button>
+				</div>
+			</form>
+			<form name="categoryForm">
+				<div class="form-group col-sm-3">
+					<label class="sr-only">Category</label>
+					<input type="text" class="form-control" ng-model="category" placeholder="Category"
+					uib-typeahead="ca for ca in categories | filter:$viewValue | limitTo:10" typeahead-min-length="0"
+					typeahead-on-select="addCriteria(params.category, category); category=''">
+					<button class="btn btn-primary" ng-click="addCriteria(params.category, category); category=''" ng-disabled="!category">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</div>
+			</form>
 		</div>
 	</form>
 	<br>
