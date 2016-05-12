@@ -53,7 +53,7 @@ angular.module('jobSearchApp')
   	$scope.clear = function () {
   		resourceService.clearParams();
       initParams();
-      var message = 'All criterias have been reinitialized'; 
+      var message = 'All criteria have been reinitialized'; 
       dialogService.showDialog(message, $state.go('app'), 'Success');
   	};
 
