@@ -1,0 +1,68 @@
+	<div class="row row-center">
+		<h1><i class="fa fa-briefcase"></i> My Job Search</h1>
+
+    	<p> <span class="lead">Search criteria :</span> 
+    		<span class="lead" ng-if="emptySelection()">Nothing selected</span>
+    		<span class="badge" ng-repeat="l in params.location">{{l}}</span>
+    		<span class="badge" ng-repeat="c in params.company">{{c}}</span>
+    		<span class="badge" ng-repeat="le in params.level">{{le}}</span>
+    		<span class="badge" ng-repeat="ca in params.category">{{ca}}</span>
+    		<br>
+    		<a class="btn btn-primary" ui-sref="app"><i class="fa fa-pencil"></i> Modify search</a>
+    	</p>
+
+    	<p class="lead"><span class="glyphicon glyphicon-search"></span> Search results : </p>
+	    <div class="row">
+        	<!-- Loader -->
+			<div layout="row" layout-sm="column" layout-align="space-around" ng-show="loading">
+				<md-progress-circular md-mode="{{loadMode}}" md-diameter="80"></md-progress-circular>
+			</div>
+        	<!-- Error messages -->
+			<div ng-show="showError">
+    			<p class="lead">
+    				<i class="fa fa-exclamation-triangle"></i> {{message}} 
+    				<a ui-sref="app">Modify search</a>
+    			</p>
+    		</div>
+
+        	<!-- Jobs list -->
+        	<div ng-hide="loading || showError">
+        		
+        		<div ng-hide="showError" class="pagination">
+					<nav>
+					  <ul class="pager">
+					    <li class="previous"><a ng-hide="first" ng-click="previous()"><span aria-hidden="true">&larr;</span> Previous</a></li>
+					    <li>Page : {{jobs.page+1}} / {{jobs.page_count}} </li>
+					    <li class="next"><a ng-hide="last" ng-click="next()">Next <span aria-hidden="true">&rarr;</span></a></li>
+					  </ul>
+					</nav>
+				</div>
+				<div class="clearfix"></div>
+			  	<div class="job-list col-sm-4" ng-repeat="job in jobs.results">
+			  		<div class="panel panel-default">
+					    <div class="panel-body">
+					    	<h4 class="company">{{job.name}} <small> - {{job.company.name}}</small></h4>
+					    	<p class="date">Posted <span am-time-ago="job.publication_date"></span></p>
+					    	<p class="locations">Locations : <span ng-repeat="location in job.locations" class="badge">{{location.name}} </span></p>
+							<p class="categories">Categories : <span ng-repeat="category in job.categories" class="badge">{{category.name}} </span></p>
+							<p class="categories">Levels : <span ng-repeat="level in job.levels" class="badge">{{level.name}} </span></p>
+					  	</div>
+					  	<div class="panel-footer">
+					  		<a class="btn btn-primary" ng-href="{{job.refs.landing_page}}" target="_blank">See job details</a>
+					  	</div>
+			  		</div>
+			  	</div>
+			  	<div class="clearfix"></div>
+			  	<div ng-hide="showError" class="pagination">
+					<nav>
+					  <ul class="pager">
+					    <li class="previous"><a ng-hide="first" ng-click="previous()"><span aria-hidden="true">&larr;</span> Previous</a></li>
+					    <li>Page : {{jobs.page+1}} / {{jobs.page_count}} </li>
+					    <li class="next"><a ng-hide="last" ng-click="next()">Next <span aria-hidden="true">&rarr;</span></a></li>
+					  </ul>
+					</nav>
+				</div>
+			</div>
+	        
+    	</div>
+    </div>

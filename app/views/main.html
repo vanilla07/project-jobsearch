@@ -1,0 +1,46 @@
+<div class="jumbotron">
+  	<h1><i class="fa fa-briefcase"></i></span> My Job Search</h1>
+  	<p class="lead">
+    	What are you looking for? <small>( You can add many entries for each filter. )</small><br><br> 
+  	</p>
+  	<form class="search-fields form-inline">
+  		<div class="row">
+			<div class="form-group col-sm-3">
+				<label class="sr-only">City</label>
+		    	<input type="text" class="form-control" ng-model="city" placeholder="City"
+		    	uib-typeahead="c for c in cities | filter:$viewValue | limitTo:10" typeahead-min-length="1">
+		    	<button class="btn btn-primary" ng-click="addCriteria(params.location, city); city=''"><span class="glyphicon glyphicon-plus"></span></button>
+		    </div>
+		    <div class="form-group col-sm-3">
+				<label class="sr-only">Companies</label>
+				<input type="text" class="form-control" ng-model="company" placeholder="Companies"
+				uib-typeahead="co for co in companies | filter:$viewValue | limitTo:10" typeahead-min-length="1">
+				<button class="btn btn-primary" ng-click="addCriteria(params.company, company); company=''"><span class="glyphicon glyphicon-plus"></span></button>
+			</div>
+			<div class="form-group col-sm-3">
+				<label class="sr-only">Job level</label>
+				<input type="text" class="form-control" ng-model="level" placeholder="Job level"
+				uib-typeahead="l for l in levels | filter:$viewValue" typeahead-min-length="0"> 
+				<button class="btn btn-primary" ng-click="addCriteria(params.level, level); level=''"><span class="glyphicon glyphicon-plus"></span> </button>
+			</div>
+			<div class="form-group col-sm-3">
+				<label class="sr-only">Category</label>
+				<input type="text" class="form-control" ng-model="category" placeholder="Category"
+				uib-typeahead="ca for ca in categories | filter:$viewValue | limitTo:10" typeahead-min-length="0">
+				<button class="btn btn-primary" ng-click="addCriteria(params.category, category); category=''"><span class="glyphicon glyphicon-plus"></span></button>
+			</div>
+		</div>
+	</form>
+	<p class="text-left">
+		Your Selection : <span ng-if="emptySelection()"><i class="fa fa-exclamation-triangle"></i> Nothing selected</span>
+		<jc-badge param="params.location" on-remove="removeCriteria(params.location, param)"></jc-badge>
+		<jc-badge param="params.company" on-remove="removeCriteria(params.company, param)"></jc-badge>
+		<jc-badge param="params.level" on-remove="removeCriteria(params.level, param)"></jc-badge>
+		<jc-badge param="params.category" on-remove="removeCriteria(params.category, param)"></jc-badge>
+	</p>
+  	<p><br>
+    	<button class="btn btn-lg btn-success" ng-click="search()">Find a job <span class="glyphicon glyphicon-ok"></span></button>
+    	<button class="btn btn-lg btn-warning" ng-click="clear()">Clear <span class="glyphicon glyphicon-remove"></span></button>
+  	</p>
+</div>
+
