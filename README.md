@@ -1,6 +1,6 @@
 # Introduction
 
-A job search application using the API provided by The Muse and available here https://www.themuse.com/developers/api/v2
+A job search application using the API provided by The Muse ( see https://www.themuse.com/developers/api/v2 )
 
 Search for a job using filters.
 
