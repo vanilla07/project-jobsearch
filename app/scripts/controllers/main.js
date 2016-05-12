@@ -41,7 +41,7 @@ angular.module('jobSearchApp')
     };
 
     $scope.addCriteria = function(params, param) {
-      if (param.length > 0) {
+      if (!isEmpty(param)) {
         var index = params.indexOf(param);
         if (index <= -1) {
           params.push(param);
