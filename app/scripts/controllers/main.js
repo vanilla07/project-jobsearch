@@ -19,7 +19,7 @@ angular.module('jobSearchApp')
       if (!$scope.params.level) { $scope.params.level = []; }
       if (!$scope.params.category) { $scope.params.category = []; }
     };
-    
+
     var isEmpty = function(tab) {
       if (!tab || tab.length === 0) {
         return true;
@@ -41,11 +41,13 @@ angular.module('jobSearchApp')
     };
 
     $scope.addCriteria = function(params, param) {
-      var index = params.indexOf(param);
-      if (index <= -1) {
-        params.push(param);
+      if (param.length > 0) {
+        var index = params.indexOf(param);
+        if (index <= -1) {
+          params.push(param);
+        }
+        param = '';
       }
-      param = '';
     };
 
   	$scope.clear = function () {
