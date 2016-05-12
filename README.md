@@ -24,7 +24,7 @@ To test the application run the following commands :
 
 # Test The Application Online
 
-http://jchevalier.pro/projects/bnb
+http://jchevalier.pro/projects/job-search/
 
 
 
