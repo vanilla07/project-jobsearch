@@ -74,17 +74,11 @@ angular.module('jobSearchApp')
             }
         };
 
-		$scope.select = function(setTab) {
-            $scope.tab = setTab;
-            $scope.selectedType = setTab;
-            if (setTab === 'all') {
-            	$scope.selectedType = '';
-            }
-            
+        $scope.saveJob = function(job) {
+            resourceService.saveJob(job);
         };
-
-        $scope.isSelected = function (checkTab) {
-            return ($scope.tab === checkTab);
+        $scope.isSaved = function(job) {
+            return resourceService.isSaved(job);
         };
 
 	}])

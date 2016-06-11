@@ -1,17 +1,24 @@
 	<div class="row row-center">
-		<h1 class="logo"><i class="fa fa-briefcase"></i> My Job Search</h1><hr> 
+		<div class="row">
+            <h1 class="col-sm-12 logo"><img src="images/logo.png"></h1>
+        </div>
+        <hr> 
 
-    	<p> <span class="lead">Search criteria :</span> 
-    		<span class="lead" ng-if="emptySelection()">Nothing selected</span>
-    		<span class="badge" ng-repeat="l in params.location">{{l}}</span>
-    		<span class="badge" ng-repeat="c in params.company">{{c}}</span>
-    		<span class="badge" ng-repeat="le in params.level">{{le}}</span>
-    		<span class="badge" ng-repeat="ca in params.category">{{ca}}</span>
-    		<br><br>
-    		<a class="btn btn-primary" ui-sref="app"><i class="fa fa-pencil"></i> Modify search</a>
-    	</p>
+        <div class="row">
+        	<p class="col-sm-12"> <span class="lead">Search criteria :</span> 
+        		<span class="lead" ng-if="emptySelection()">Nothing selected</span>
+        		<span class="badge" ng-repeat="l in params.location">{{l}}</span>
+        		<span class="badge" ng-repeat="c in params.company">{{c}}</span>
+        		<span class="badge" ng-repeat="le in params.level">{{le}}</span>
+        		<span class="badge" ng-repeat="ca in params.category">{{ca}}</span>
+        		<br><br>
+        		<a class="btn btn-primary" ui-sref="app"><i class="fa fa-pencil"></i> Modify search</a>
+        	</p>
+        </div>
     	<hr> 
-    	<p class="lead"><span class="glyphicon glyphicon-search"></span> Search results : </p>
+        <div class="row">
+    	   <p class="lead col-sm-12"><span class="glyphicon glyphicon-search"></span> Search results : </p>
+        </div>
 	    <div class="row">
         	<!-- Loader -->
 			<div layout="row" layout-sm="column" layout-align="space-around" ng-show="loading">
@@ -48,7 +55,9 @@
 							<p class="categories">Levels : <span ng-repeat="level in job.levels" class="badge">{{level.name}} </span></p>
 					  	</div>
 					  	<div class="panel-footer">
-					  		<a class="btn btn-primary" ng-href="{{job.refs.landing_page}}" target="_blank">See job details</a>
+                            <a class="btn btn-primary" ng-if="!isSaved(job)" ng-click="saveJob(job)"><i class="glyphicon glyphicon-heart-empty"></i> Save </a>
+                            <span class="btn btn-default disabled" ng-if="isSaved(job)" class="page-number"><i class="glyphicon glyphicon-heart heart-red"></i> Saved</span>
+					  		<a class="btn btn-primary" ng-href="{{job.refs.landing_page}}" target="_blank">See more</a>
 					  	</div>
 			  		</div>
 			  	</div>

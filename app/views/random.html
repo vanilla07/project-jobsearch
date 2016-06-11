@@ -1,0 +1,55 @@
+    <div class="row row-center">
+        <div class="row">
+            <h1 class="col-sm-12 logo"><img src="images/logo.png"></h1>
+        </div>
+        <hr> 
+        <div class="row">
+            <p class="col-sm-12"> <span class="lead">Search criteria :</span> 
+                <span class="lead" ng-if="emptySelection()">Nothing selected</span>
+                <span class="badge" ng-repeat="l in params.location">{{l}}</span>
+                <span class="badge" ng-repeat="c in params.company">{{c}}</span>
+                <span class="badge" ng-repeat="le in params.level">{{le}}</span>
+                <span class="badge" ng-repeat="ca in params.category">{{ca}}</span>
+                <br>
+            </p>
+        </div>
+        <hr> 
+        <div class="row">
+            <!-- Loader -->
+            <div layout="row" layout-sm="column" layout-align="space-around" ng-show="loading">
+                <md-progress-circular md-mode="{{loadMode}}" md-diameter="80"></md-progress-circular>
+            </div>
+            <!-- Error messages -->
+            <div ng-show="showError">
+                <p class="lead">
+                    <i class="fa fa-exclamation-triangle"></i> {{message}} 
+                    <a ui-sref="app">Modify search</a>
+                </p>
+            </div>
+
+            <!-- Jobs list -->
+            <div ng-hide="loading || showError">
+                <div class="clearfix"></div>
+                <div class="job-list col-sm-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body panel-big">
+                            <h4 class="company">{{randomJob.name}} <small> - {{randomJob.company.name}}</small></h4>
+                            <p class="date"><i class="fa fa-clock-o"></i> Posted <b am-time-ago="randomJob.publication_date"></b></p>
+                            <p class="locations">Locations : <span ng-repeat="location in randomJob.locations" class="badge">{{location.name}} </span></p>
+                            <p class="categories">Categories : <span ng-repeat="category in randomJob.categories" class="badge">{{category.name}} </span></p>
+                            <p class="categories">Levels : <span ng-repeat="level in randomJob.levels" class="badge">{{level.name}} </span></p>
+                            <p ng-bind-html="randomJob.contents | unsafe"></p>
+                        </div>
+                        <div class="panel-footer">
+                            <a class="btn btn-success" ng-href="{{randomJob.refs.landing_page}}" target="_blank"> Apply </a>
+                            <a class="btn btn-primary" ng-hide="isSaved" ng-click="saveJob()"><i class="glyphicon glyphicon-heart-empty"></i> Save </a>
+                            <span class="btn btn-default disabled" ng-show="isSaved" class="page-number"><i class="glyphicon glyphicon-heart heart-red"></i> Saved</span>
+                            <a class="btn btn-primary" ng-hide="last" ng-click="next()">Next <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            
+        </div>
+    </div>

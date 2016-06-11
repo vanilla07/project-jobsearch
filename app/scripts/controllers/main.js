@@ -59,6 +59,11 @@ angular.module('jobSearchApp')
       $state.go('app.jobs');
   	};
 
+    $scope.searchRandom = function () {
+      resourceService.updateParams($scope.params);
+      $state.go('app.random');
+    };
+
     // init resources
 
     initParams();

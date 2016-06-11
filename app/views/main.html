@@ -1,8 +1,11 @@
 <div class="jumbotron">
-  	<h1 class="logo"><i class="fa fa-briefcase"></i></span> My Job Search</h1><hr>
-  	<p class="lead">
-    	What are you looking for? <small>( You can add many entries for each filter. )</small><br><br> 
-  	</p>
+  	<h1 class="logo"><img src="images/logo-white.svg"></h1>
+  	<hr>
+  	<div class="row">
+	  	<p class="col-sm-12 lead">
+	    	What are you looking for? <small>( You can add many entries to each filter. )</small><br><br> 
+	  	</p>
+  	</div>
   	<form class="search-fields form-inline"> 
   		<div class="row">
   			<form name="locationForm">
@@ -60,6 +63,7 @@
 		<jc-badge param="params.category" on-remove="removeCriteria(params.category, param)"></jc-badge>
 	</p>
   	<p><br>
+    	<button class="btn btn-lg btn-primary" ng-click="searchRandom()">Random jobs <i class="fa fa-hand-o-right"></i></button>
     	<button class="btn btn-lg btn-success" ng-click="search()">Find a job <span class="glyphicon glyphicon-ok"></span></button>
     	<button class="btn btn-lg btn-warning" ng-click="clear()">Clear <span class="glyphicon glyphicon-remove"></span></button>
   	</p>

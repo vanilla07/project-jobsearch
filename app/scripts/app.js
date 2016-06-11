@@ -48,6 +48,27 @@ angular
               }
           },
       })
+      // route for the random job
+      .state('app.random', {
+          url:'random',
+          views: {
+              'content@': {
+                  templateUrl : 'views/random.html',
+                  controller  : 'RandomCtrl'                  
+              }
+          },
+      })
+      // route for the random job
+      .state('app.saved', {
+          url:'saved',
+          views: {
+              'content@': {
+                  templateUrl : 'views/saved.html',
+                  controller  : 'SavedCtrl'                  
+              }
+          },
+      })
+
       ;
     
     $urlRouterProvider.otherwise('/');

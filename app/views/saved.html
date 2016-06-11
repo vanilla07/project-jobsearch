@@ -1,0 +1,39 @@
+    <div class="row row-center">
+        <div class="row">
+            <h1 class="col-sm-12 logo"><img src="images/logo.png"></h1>
+        </div>
+        <hr>
+
+        <div class="row">
+            <p class="lead col-sm-12"> <span class="glyphicon glyphicon-search"></span> My Saved Jobs : </p>
+        </div>
+
+        <div class="row">
+            <!-- Error messages -->
+            <div ng-show="showError">
+                <p class="col-sm-12 lead">
+                    <i class="fa fa-exclamation-triangle"></i> {{message}} 
+                    <a ui-sref="app.random">Browse Jobs</a>
+                </p>
+            </div>
+
+            <!-- Jobs list -->
+            <div ng-hide="loading || showError">
+                <div class="clearfix"></div>
+                <div class="job-saved col-sm-4" ng-repeat="job in savedJobs">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h4 class="company">{{job.name}} <small> - {{job.company.name}}</small></h4>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="date"><i class="fa fa-clock-o"></i> Posted <b am-time-ago="job.publication_date"></b></span>
+                            <a class="btn-right btn btn-primary" ng-href="{{job.refs.landing_page}}" target="_blank">Apply</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            
+        </div>
+    </div>

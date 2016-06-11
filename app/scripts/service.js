@@ -51,6 +51,10 @@ angular.module('jobSearchApp')
           this.params.page = 0;
         };
 
+        this.randomInt = function (min,max) {
+          return Math.floor(Math.random() * (max - min +1) + min);
+        };
+
         /* Resource cities */
         this.getCities = function() {
           return $resource('cities.json');
@@ -68,6 +72,26 @@ angular.module('jobSearchApp')
           'Education', 'Engineering', 'Finance & Data', 'Fundraising & Development', 'Healthcare & Medicine', 'HR & Recruiting', 
           'Legal', 'Marketing & PR', 'Operations', 'Project & Product Management', 'Retail Sales', 'Social Media & Community'];
         
+        /* Saved jobs */
+        this.savedJobs = [];
+
+        this.isSaved = function(job) {
+            var saved = this.savedJobs;
+            for (var i = saved.length - 1; i >= 0; i--) {
+                if (saved[i].id === job.id) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        this.saveJob = function(job) {
+            if (!this.isSaved(job)) {
+              this.savedJobs.push(job);
+            }
+        };
+
+
     }])
     .service('dialogService',[ '$mdDialog', function($mdDialog) {
       

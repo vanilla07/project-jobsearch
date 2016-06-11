@@ -10,7 +10,7 @@
           <span class="icon-bar"></span>
         </button>
 
-        <a class="navbar-brand" href="#/"><i class="fa fa-briefcase"></i> MY JOB SEARCH</a>
+        <a class="navbar-brand" href="#/"><img src="images/logo-white.svg"/></a>
       </div>
 
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -18,6 +18,8 @@
         <ul class="nav navbar-nav">
           <li ng-class="{ active: isActive('/')}"><a ui-sref="app">Search</a></li>
           <li ng-class="{ active: isActive('/jobs')}"><a ui-sref="app.jobs">Results</a></li>
+          <li ng-class="{ active: isActive('/random')}"><a ui-sref="app.random">I feel lucky!</a></li>
+          <li ng-class="{ active: isActive('/saved')}"><a ui-sref="app.saved">My Saved Jobs</a></li>
         </ul>
       </div>
     </div>
